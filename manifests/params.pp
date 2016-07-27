@@ -84,7 +84,7 @@ class java::params {
             },
           }
         }
-        'wheezy', 'jessie', 'precise','quantal','raring','saucy', 'trusty', 'utopic': {
+        'wheezy', 'jessie', 'precise','quantal','raring','saucy': {
           $java =  {
             'jdk' => {
               'package'          => 'openjdk-7-jdk',
@@ -122,6 +122,46 @@ class java::params {
               'alternative_path' => '/usr/lib/jvm/j2sdk1.8-oracle/bin/java',
               'java_home'        => '/usr/lib/jvm/j2sdk1.8-oracle/',
               },
+            }
+          }
+         'trusty', 'utopic': {
+          $java =  {
+            'jdk' => {
+              'package'          => 'openjdk-7-jdk',
+              'alternative'      => "java-1.7.0-openjdk-${::architecture}",
+              'alternative_path' => "/usr/lib/jvm/java-1.7.0-openjdk-${::architecture}/bin/java",
+              'java_home'        => "/usr/lib/jvm/java-1.7.0-openjdk-${::architecture}/",
+            },
+            'jre' => {
+              'package'          => 'openjdk-7-jre-headless',
+              'alternative'      => "java-1.7.0-openjdk-${::architecture}",
+              'alternative_path' => "/usr/lib/jvm/java-1.7.0-openjdk-${::architecture}/bin/java",
+              'java_home'        => "/usr/lib/jvm/java-1.7.0-openjdk-${::architecture}/",
+            },
+            'oracle-jre' => {
+              'package'          => 'oracle-java7-jre',
+              'alternative'      => 'jre-7-oracle-x64',
+              'alternative_path' => "/usr/lib/jvm/jre-7-oracle-x64/bin/java",
+              'java_home'        => "/usr/lib/jvm/jre-7-oracle-x64/",
+            },
+            'oracle-jdk' => {
+              'package'          => 'oracle-java7-jdk',
+              'alternative'      => 'jdk-7-oracle-x64',
+              'alternative_path' => "/usr/lib/jvm/jdk-7-oracle-x64/jre/bin/java",
+              'java_home'        => "/usr/lib/jvm/jdk-7-oracle-x64/jre/",
+            },
+            'oracle-j2re' => {
+              'package'          => 'oracle-java8-jre',
+              'alternative'      => 'jre-8-oracle-x64',
+              'alternative_path' => "/usr/lib/jvm/jre-8-oracle-x64/bin/java",
+              'java_home'        => "/usr/lib/jvm/jre-8-oracle-x64/",
+            },
+            'oracle-j2sdk' => {
+              'package'          => 'oracle-java8-jdk',
+              'alternative'      => 'jdk-8-oracle-x64',
+              'alternative_path' => "/usr/lib/jvm/jdk-8-oracle-x64/jre/bin/java",
+              'java_home'        => "/usr/lib/jvm/jdk-8-oracle-x64/jre/",
+            },
           }
         }
         'vivid', 'wily', 'xenial': {
