@@ -61,7 +61,7 @@ class java(
     $default_package_name     = $java::params::java[$distribution]['package']
     $default_alternative      = $java::params::java[$distribution]['alternative']
     $default_alternative_path = $java::params::java[$distribution]['alternative_path']
-    $java_home                = $java::params::java[$distribution]['java_home']
+    $default_java_home        = $java::params::java[$distribution]['java_home']
   } else {
     fail("Java distribution ${distribution} is not supported.")
   }
@@ -89,6 +89,14 @@ class java(
       default               => undef,
     },
     default => $java_alternative_path,
+  }
+
+  $java_home = $use_java_package_name ? {
+    $default_package_name => $default_java_home,
+    default               => $java_alternative_path ? {
+      undef   => undef,
+      default => regsubst($java_alternative_path, '/bin/java$', ''),
+    }
   }
 
   $jre_flag = $use_java_package_name ? {
