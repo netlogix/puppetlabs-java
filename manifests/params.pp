@@ -177,7 +177,19 @@ class java::params {
               'alternative'      => "java-1.8.0-openjdk-${::architecture}",
               'alternative_path' => "/usr/lib/jvm/java-1.8.0-openjdk-${::architecture}/bin/java",
               'java_home'        => "/usr/lib/jvm/java-1.8.0-openjdk-${::architecture}/",
-            }
+            },
+            'oracle-j2re' => {
+              'package'          => 'oracle-java8-jre',
+              'alternative'      => 'jre-8-oracle-x64',
+              'alternative_path' => "/usr/lib/jvm/oracle-java8-jre-${::architecture}/bin/java",
+              'java_home'        => "/usr/lib/jvm/oracle-java8-jre-${::architecture}/",
+            },
+            'oracle-j2sdk' => {
+              'package'          => 'oracle-java8-jdk',
+              'alternative'      => 'jdk-8-oracle-x64',
+              'alternative_path' => "/usr/lib/jvm/oracle-java8-jdk-${::architecture}/jre/bin/java",
+              'java_home'        => "/usr/lib/jvm/oracle-java8-jdk-${::architecture}/jre/",
+            },
           }
         }
         default: { fail("unsupported release ${::lsbdistcodename}") }
